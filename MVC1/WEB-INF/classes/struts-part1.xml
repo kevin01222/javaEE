@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="user_find_findAll.action" class="com.neu.action.UserAction"
+			method="findAll">
+			<result name="success" type="dispatcher">/user/user_findAll.jsp</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+
+		<action name="user_find_findById.action" class="com.neu.action.UserAction"
+			method="findById">
+			<result name="success" type="dispatcher">/user/user_findAll.jsp</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+		<action name="user_find_findByName.action" class="com.neu.action.UserAction"
+			method="findByName">
+			<result name="success" type="dispatcher">/user/user_find_findAll.jsp
+			</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+
+		<action name="user_save.action" class="com.neu.action.UserAction"
+			method="save">
+			<result name="success" type="redirectAction">user_find_findAll</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+
+		<action name="user_delete.action" class="com.neu.action.UserAction"
+			method="delete">
+			<result name="success" type="redirectAction">user_find_findAll</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+
+		<action name="user_update.action" class="com.neu.action.UserAction"
+			method="findAll">
+			<result name="success" type="redirectAction">user_find_findAll</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+
+		<action name="user_logini.action" class="com.neu.action.UserAction"
+			method="login">
+			<result name="success" type="redirect">user_find_findAll.action</result>
+			<result name="error" type="redirect">/error.jsp</result>
+		</action>
+	</package>
+</struts>
