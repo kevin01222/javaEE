@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- dialect 方言:由于Hibernate框架不依赖于任何数据库,所以必须通过dialect确认匹配何种数据库. -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect
+		</property>
+	
+		<!-- 如果Hibernate执行了数据库操作,希望在控制台按照规定格式打印输出执行的sql语句 -->
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		
+		<!-- 配置正向工程,创建数据库中的表 create,update -->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		
+		<!-- 设置getCurrentSession方法的context上下文(运行环境)信息-->
+		<property name="current_session_context_class">thread</property>
+        
+	</session-factory>
+</hibernate-configuration>
