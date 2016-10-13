@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c3p0-config>
+	      
+	<named-config name="java9">
+		<!-- 实现连接池与数据库的连接，从而可以将数据库的con对象放入连接池 -->
+		             
+		<property name="user">root</property>
+		             
+		<property name="password">root</property>
+		             
+		<property name="driverClass">com.mysql.jdbc.Driver</property>
+		             
+		<property name="jdbcUrl">jdbc:mysql://10.25.164.163:3306/java9
+		</property>
+		<!-- 对Connection对象在连接池中的数量进行配置 -->
+		             
+		<property name="initialPoolSize">10</property>
+		             
+		<property name="minPoolSize">10</property>
+		             
+		<property name="maxPoolSize">50</property>
+		             
+		<property name="acquireIncrement">10</property>
+		<!-- 对PreparedStatement对象及Statement对象在连接池中的数量进行配置 -->
+		<property name="maxStatements">20</property>
+		             
+		<property name="maxStatementsPerConnection">5</property>
+		      
+	</named-config>
+</c3p0-config>

@@ -1,0 +1,22 @@
+练习题:
+根据MVC原型代码开发的演示Demo
+完成如下表的CRUD模块
+
+t_air 航班(表名)
+
+id 自增主键
+air_no  例如CZ7878  航班号
+start_loc  大连
+end_loc    广州
+start_time  2016-10-07 16:35:00 出发时间
+end_time    抵达时间 2016-10-07 20:05:00
+price   2200 机票价格
+
+生成Pojo类对象
+
+class AIR{
+private int id;
+private String airNo;
+private String startLoc;
+.....
+}
