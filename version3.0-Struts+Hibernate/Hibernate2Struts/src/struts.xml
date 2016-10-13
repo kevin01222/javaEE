@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- Struts2替换C层的Servlet代码 通过Struts.xml配置跳转业务逻辑 -->
+	<!-- 优势:1-代码解耦合 2-通过通配符,实现自由匹配,减少代码数量 -->
+	<!-- package元素的属性: 
+	1-name 给包命名 
+	2-namespace "/abc" http://localhost:8080/MVC2Struts/abc/***.action 
+		"/" http://localhost:8080/MVC2Struts/***.action 
+	3-extends "struts-default" 
+	
+	struts2框架中已经定义了一个包struts-default,这个包中包含了实现 自动取值功能的拦截器(过滤器)等 -->
+	<!-- 
+	action元素的属性: 
+	1-name http://localhost:8080/MVC2Struts/user_find_findAll.action 
+	2-class 如果用户提出了name指定的url请求,则生成com.neu.action.UserAction的对象 
+	3-method 并执行findAll方法 
+	-->
+	<!-- result元素的属性: 
+	1-name UserAction中的方法返回值 success error 
+	2-type 跳转方式 dispatcher转发 
+	redirect 重定向到页面(jsp/html) 
+	redirectAction 重定向到***.action 
+	3-文本节点 跳转到的文件url路径 
+	-->
+
+	<package name="user_crud" namespace="/" extends="struts-default">
+
+		<global-results>
+			<result name="error" type="redirect">/error.jsp</result>
+		</global-results>
+		<!-- 通配符的使用  *  {n} -->
+		
+		<!-- findById,findByName,findAll -->
+		<action name="user_find_*" class="com.neu.action.UserAction"
+			method="{1}">
+			<result name="success" type="dispatcher">/user_main.jsp</result>
+		</action>
+		
+		<!-- save,update,login,delete -->
+		<action name="user_*" class="com.neu.action.UserAction"
+			method="{1}">
+			<result name="success" type="redirectAction">user_find_findAll</result>
+		</action>
+		
+		<action name="user_registry" class="com.neu.action.UserAction"
+			method="registry">
+			<result name="success" type="redirect">/index.jsp</result>
+		</action>
+
+	</package>
+
+</struts>

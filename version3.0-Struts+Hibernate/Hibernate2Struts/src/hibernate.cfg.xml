@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- dialect 方言:由于Hibernate框架不依赖于任何数据库,所以必须通过dialect确认匹配何种数据库. -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+		<!-- 实现数据库连接的配置信息 驱动名称\数据库URL\用户名\密码 -->
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://10.25.164.163:3306/java9</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">root</property>
+		<!-- 如果Hibernate执行了数据库操作,希望在控制台按照规定格式打印输出执行的sql语句 -->
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+
+		<!-- 在Hibernate中配置C3P0连接池 -->
+		<property name="hibernate.c3p0.min_size">10</property>
+		<property name="hibernate.c3p0.max_size">50</property>
+		<property name="hibernate.c3p0.acquire_increment">10</property>
+		<property name="hibernate.c3p0.idle_test_period">2000</property>
+		<property name="hibernate.c3p0.timeout">2000</property>
+		<property name="hibernate.c3p0.max_statements">10</property>
+
+		<!-- 配置正向工程,创建数据库中的表 create,update -->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		
+		<!-- 设置getCurrentSession方法的context上下文(运行环境)信息 -->
+		<property name="current_session_context_class">thread</property>
+		
+		<!-- 注册ORM映射配置信息 -->
+		<mapping resource="com/neu/dao/pojo/User.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>
